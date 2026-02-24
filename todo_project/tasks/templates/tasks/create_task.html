@@ -1,0 +1,12 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+<h1>Создать новую задачу</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <label for="title">Название</label>
+    <input type="text" name="title" id="title">
+    <label for="description">Описание</label>
+    <textarea name="description" id="description"></textarea>
+    <button type="submit">Создать</button>
+</form>

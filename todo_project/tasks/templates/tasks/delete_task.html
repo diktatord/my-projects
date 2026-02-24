@@ -1,0 +1,9 @@
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+<h1>Удалить задачу</h1>
+<P>Вы увереныб что хотите удалить задачу "{{task.title}}?"</P>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+    <a href="{% url 'index' %}">Отмена</a>
+</form>

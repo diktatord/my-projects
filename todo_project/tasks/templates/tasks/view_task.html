@@ -1,0 +1,15 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <h1>Название: {{ tasks.title }} </h1>
+    <h2>Описание:{{ tasks.description }}</h2>
+{% if task.completed %}
+    <p>Статус: Выполнено</p>
+{% endif %}
+
+<a href="{% url 'edit_task' tasks.id %}">Редактировать</a>
+<a href="{% url 'index' %}">Назад</a>
+<p>
+    <img src="{% static 'images/pusheen1.png' %}" alt="pusheen1" >
+    <p>Сегоднящняя дата:{% now "Y-m-d H:i" %}</p>
+</p>
