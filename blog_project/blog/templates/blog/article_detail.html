@@ -1,0 +1,33 @@
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+{% block content %}
+
+<h2>{{ article.title }}</h2>
+<p>{{ article.content }}</p>
+<p>Автор: {{ article.author }}</p>
+
+{% if user == article.author %}
+    <a href="{% url 'article_edit' article.pk %}">Редактировать</a>
+{% endif %}
+
+<hr>
+<h3>Комментарии</h3>
+
+{% for comment in comments %}
+    <p><b>{{ comment.author }}</b>: {{ comment.text }}</p>
+
+{% empty %}
+    <p>Комментариев пока нет</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить комментарий</button>
+</form>
+{% endif %}
+
+{% endblock %}

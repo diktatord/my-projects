@@ -1,0 +1,10 @@
+<nav>
+  {% if user.is_authenticated %}
+    <span>Привет, {{ user }}!</span> |
+    <a href="{% url 'article_create' %}">Создать статью</a> |
+    <a href="{% url 'logout' %}">Выйти</a>
+  {% else %}
+    <a href="{% url 'login' %}">Вход</a> |
+    <a href="{% url 'register' %}">Регистрация</a>
+  {% endif %}
+</nav>
